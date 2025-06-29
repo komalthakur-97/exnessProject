@@ -1,25 +1,30 @@
 import React from "react";
-import { Button, Select, Tooltip, Space } from "antd";
+import { Button, Select, Tooltip, Space, Tag, Row } from "antd";
 import {
-    PauseOutlined,
+    SlidersOutlined,
     RiseOutlined,
-    PicLeftOutlined,
-    BarChartOutlined,
-    HighlightOutlined,
-    FontSizeOutlined,
-    SmileOutlined, DeleteOutlined
+    DownOutlined,
+    NodeIndexOutlined,
+    DoubleLeftOutlined,
+    LeftOutlined,
+    RightOutlined, AppstoreOutlined, EyeOutlined, ExpandOutlined, ArrowUpOutlined, CameraOutlined
 } from "@ant-design/icons";
 
 const { Option } = Select;
 const ICONS = [
-    { icon: <PauseOutlined />, label: "Candle" },
-    { icon: <RiseOutlined />, label: "Trend Line" },
-    { icon: <PicLeftOutlined />, label: "Horizontal Line" },
-    { icon: <BarChartOutlined />, label: "Polyline Tool" },
-    { icon: <HighlightOutlined />, label: "Curve Tool" },
-    { icon: <FontSizeOutlined />, label: "Text" },
-    { icon: <SmileOutlined />, label: "Emoji" },
-    { icon: <DeleteOutlined />, label: "Delete" },
+    { icon: <SlidersOutlined />, label: "Candle" },
+    { icon: <NodeIndexOutlined />, label: "Indicators & Strategies" },
+    { icon: <AppstoreOutlined />, label: "Indicator Templates" },
+    { icon: <DoubleLeftOutlined />, label: "Bar Reply" },
+    { icon: <LeftOutlined /> },
+    { icon: <RightOutlined /> },
+];
+const ICONSRIGHT = [
+    { icon: <DownOutlined />, label: "Manage Layouts" },
+    { icon: <CameraOutlined />, label: "Take a Snapshot" },
+    { icon: <Tag color="green" icon={<ArrowUpOutlined />} />, label: "IntraDay" },
+    { icon: <ExpandOutlined />, label: "Fullscreen Mode" },
+    { icon: <EyeOutlined />, label: "Show on Chart" },
 ];
 
 
@@ -54,7 +59,7 @@ const TradingTopBar = () => (
             <Space size={25}>
                 {ICONS.map(({ icon, label }) => (
                     <Tooltip key={label} title={label}>
-                        <span style={{ fontSize: 18, color: '#ccc', cursor: 'pointer' }}>
+                        <span style={{ fontSize: 20, color: '#ccc', cursor: 'pointer' }}>
                             {icon}
                         </span>
                     </Tooltip>
@@ -64,31 +69,57 @@ const TradingTopBar = () => (
         </Space>
 
         {/* RIGHT: Sell/Buy */}
-        <Space>
-            <span>1.0</span>
+        <Row>  <Space size={25}>
             <Button
-                size="small"
                 style={{
-                    background: "#CD5656",
-                    borderColor: "#CD5656",
-                    color: "#F1F5F9",
-                    minWidth: 90,
+                    background: 'rgb(20, 29, 38)',
+                    border: '1px solid rgb(20, 29, 38)',
+                    color: '#fff',
+                    padding: '4px 12px',
+                    textAlign: 'center',
+                    height: 'auto',
+                    lineHeight: 1.2,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
                 }}
             >
-                Sell 144.382
+                <span style={{ color: '#fff', fontSize: 13 }}>Save</span>
+                <span style={{ color: 'yellow', fontSize: 13 }}>Save</span>
             </Button>
-            <Button
-                size="small"
-                type="primary"
-                style={{
-                    background: "#295F98",
-                    borderColor: "#295F98",
-                    minWidth: 90,
-                }}
-            >
-                Buy 144.392
-            </Button>
+            {ICONSRIGHT.map(({ icon, label }) => (
+                <Tooltip key={label} title={label}>
+                    <span style={{ fontSize: 20, color: '#ccc', cursor: 'pointer' }}>
+                        {icon}
+                    </span>
+                </Tooltip>
+            ))}
         </Space>
+            <Space>
+                <Button
+                    size="small"
+                    style={{
+                        background: "#CD5656",
+                        borderColor: "#CD5656",
+                        color: "#F1F5F9",
+                        minWidth: 90,
+                    }}
+                >
+                    Sell 144.382
+                </Button>
+                <span>0.9</span>
+                <Button
+                    size="small"
+                    type="primary"
+                    style={{
+                        background: "#295F98",
+                        borderColor: "#295F98",
+                        minWidth: 90,
+                    }}
+                >
+                    Buy 144.392
+                </Button>
+            </Space></Row>
     </div>
 );
 
