@@ -154,19 +154,13 @@ const InstrumentsTable = () => {
     };
 
     const columns = [
-        // {
-        //     title: '',
-        //     dataIndex: 'drag',
-        //     key: 'drag',
-        //     width: 30,
-        //     render: () => (
-
-        //     ),
-        // },
         {
             title: 'Symbol',
             dataIndex: 'symbol',
             key: 'symbol',
+            width: 130,
+            fixed: 'left',
+            className: 'fixed-symbol-column', // 👈 Add this
             render: (_, record) => (
                 <Space>
                     <HolderOutlined style={{ cursor: 'grab', color: '#888' }} />
@@ -179,20 +173,22 @@ const InstrumentsTable = () => {
             title: 'Signal',
             dataIndex: 'signal',
             key: 'signal',
+            width: 60,
             render: (signal) => getSignalTag(signal),
-            align: 'center',
+            // align: 'center',
         },
         {
             title: 'Bid',
             dataIndex: 'bid',
             key: 'bid',
+            width: 100,
             render: (bid) => (
                 <div
                     style={{
-                        background: '#29b474',
-                        color: '#000',
-                        padding: '2px 6px',
-                        borderRadius: 4,
+                        // background: '#29b474',
+                        color: '#F1F5F9',
+                        // padding: '2px 6px',
+                        // borderRadius: 4,
                         fontWeight: 500,
                         fontSize: 12,
                     }}
@@ -200,19 +196,20 @@ const InstrumentsTable = () => {
                     {bid}
                 </div>
             ),
-            align: 'right',
+            // align: 'right',
         },
         {
             title: 'Ask',
             dataIndex: 'ask',
             key: 'ask',
+            width: 100,
             render: (ask) => (
                 <div
                     style={{
-                        background: '#e84c4c',
+                        // background: '#e84c4c',
                         color: '#F1F5F9',
-                        padding: '2px 6px',
-                        borderRadius: 4,
+                        // padding: '2px 6px',
+                        // borderRadius: 4,
                         fontWeight: 500,
                         fontSize: 12,
                     }}
@@ -220,11 +217,12 @@ const InstrumentsTable = () => {
                     {ask}
                 </div>
             ),
-            // align: 'right',
-        }, {
+        },
+        {
             title: '1D Change',
             dataIndex: 'change',
             key: 'change',
+            width: 120,
             render: (change) => {
                 const isPositive = change?.startsWith('+');
                 const color = isPositive ? 'green' : 'red';
@@ -233,28 +231,26 @@ const InstrumentsTable = () => {
                     <Space style={{ color }}>
                         {icon}
                         <span>{change}</span>
-                        {/* You can add mini chart image/svg/icon here if you have it */}
                     </Space>
                 );
             },
-            align: 'right',
+            // align: 'right',
         },
         {
             title: 'P/L, USD',
             dataIndex: 'pl',
             key: 'pl',
-            render: (pl) => <span style={{ color: '#F1F5F9' }}>{pl || '-'}</span>,
-            align: 'center',
+            width: 100,
+            render: (pl) => (
+                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                    <span style={{ color: '#F1F5F9' }}>{pl || '-'}</span>{' '}
+                    <span style={{ color: 'gold', fontSize: 18 }}>⭐</span>
+                </div>
+            ),
+            // align: 'center',
         },
-        {
-            title: '',
-            dataIndex: 'favorite',
-            key: 'favorite',
-            render: () => <span style={{ color: 'gold', fontSize: 18 }}>⭐</span>,
-            align: 'center',
-        },
-
     ];
+
 
     const onDragOver = (e) => {
         e.preventDefault(); // allow drop
@@ -265,18 +261,21 @@ const InstrumentsTable = () => {
     return (
         <Card
             title={<span style={{ color: '#aaa' }}>INSTRUMENTS</span>}
-            bodyStyle={{ background: '#1E293B', padding: '0 12px 12px' }}
+            bodyStyle={{ background: 'rgb(20, 29, 38)', padding: '0 12px 12px' }}
             style={{
                 width: '100%',
                 height: '100%',
-                background: '#1A232D',
+                background: 'rgb(20, 29, 38)', // ✅ set proper background
                 border: '1px solid #2f3e4d',
                 borderRadius: 0,
                 color: '#F1F5F9',
             }}
-            headStyle={{ background: '#1A232D', borderBottom: '1px solid #2f3e4d' }}
+            headStyle={{ background: 'rgb(20, 29, 38)', borderBottom: '1px solid #2f3e4d' }}
         >
-            <Input placeholder="🔍 Search" style={{ marginBottom: 8 }} />
+            <Input
+                placeholder="🔍 Search"
+                style={{ marginBottom: 8, background: '#0f172a', color: '#F1F5F9' }}
+            />
             <Select defaultValue="Favorites" style={{ width: '100%', marginBottom: 10 }}>
                 <Option value="Favorites">Favorites</Option>
                 <Option value="All">All Instruments</Option>
@@ -289,16 +288,18 @@ const InstrumentsTable = () => {
                 components={components}
                 size="small"
                 pagination={false}
-                scroll={{ y: 300 }} // 👈 vertical scroll only
+                scroll={{ x: 800 }} // 👈 `x` must be >= total column width
                 style={{
-                    background: '#1A232D',
-                    color: '#0F172A',
+                    background: 'rgb(20, 29, 38)',
+                    color: '#F1F5F9',
                     fontSize: 13,
-                    whiteSpace: 'nowrap',  // ⛔ remove this if present
                 }}
+                rowClassName={() => 'custom-table-row'}
             />
 
+
         </Card>
+
     );
 };
 export default InstrumentsTable;

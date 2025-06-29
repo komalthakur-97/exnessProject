@@ -10,8 +10,8 @@ const ColBewlow = () => {
     return (
         <div
             style={{
-                background: "#1E293B",
-                borderTop: "1px solid #1E293B",
+                background: "rgb(20, 29, 38)",
+                borderTop: "1px solid rgb(20, 29, 38)",
                 padding: "0 16px",
                 display: "flex",
                 flexDirection: "column",
@@ -92,7 +92,7 @@ const ColBewlow = () => {
                     image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
                     styles={{ image: { height: 60 } }}
                     description={
-                        <Typography.Text style={{color:"#F1F5F9"}}>
+                        <Typography.Text style={{ color: "#F1F5F9" }}>
                             No Positions
                         </Typography.Text>
                     } />

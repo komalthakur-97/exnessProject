@@ -9,6 +9,7 @@ import TradeStatusBar from './components/TradeStatusBar';
 import Col2 from './components/Col2';
 import ColBelow from './components/ColBewlow';
 import VerticalSidebar from './components/VerticalSidebar';
+import "./App.css"
 
 const { Sider, Content } = Layout;
 

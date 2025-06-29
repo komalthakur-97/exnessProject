@@ -20,10 +20,10 @@ import {
 const { Text } = Typography;
 
 const tradingPairs = [
-    { symbol: 'EUR/USD', flag1: 'eu', flag2: 'us', desc: 'Euro vs US Dollar' },
-    { symbol: 'USD/JPY', flag1: 'us', flag2: 'jp', desc: 'US Dollar vs Japanese Yen' },
-    { symbol: 'XAU/USD', flag1: 'xau', flag2: 'us', desc: 'Gold vs US Dollar' },
-    { symbol: 'BTC/USD', flag1: 'btc', flag2: 'us', desc: 'Bitcoin vs US Dollar' },
+    { symbol: 'EUR/USD', flag2: 'us', desc: 'Euro vs US Dollar' },
+    { symbol: 'USD/JPY', flag2: 'jp', desc: 'US Dollar vs Japanese Yen' },
+    { symbol: 'XAU/USD', flag2: 'us', desc: 'Gold vs US Dollar' },
+    { symbol: 'BTC/USD', flag2: 'us', desc: 'Bitcoin vs US Dollar' },
 ];
 
 const flagImg = (code) => {
@@ -120,7 +120,8 @@ const TradingHeader = () => {
                 {/* LEFT SIDE */}
                 <Space size="large">
                     <Text style={{ color: '#F9CE00', fontSize: '22px', fontWeight: 'bold' }}>exness</Text>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                    &nbsp;
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
                         {tradingPairs.map((pair) => (
                             <div
                                 key={pair.symbol}
@@ -130,13 +131,13 @@ const TradingHeader = () => {
                                     color: selectedPair === pair.symbol ? '#fff' : '#ccc',
                                     fontWeight: selectedPair === pair.symbol ? 'bold' : 'normal',
                                     borderBottom: selectedPair === pair.symbol ? '2px solid #fff' : '2px solid transparent',
-                                    paddingBottom: 4,
+                                    // paddingBottom: 4,
                                     display: 'flex',
                                     alignItems: 'center',
                                     gap: 6,
                                 }}
                             >
-                                <img src={flagImg(pair.flag1)} alt="" width={20} height={14} />
+                                {/* <img src={flagImg} alt="" width={20} height={14} /> */}
                                 <span>{pair.symbol}</span>
                                 <img src={flagImg(pair.flag2)} alt="" width={20} height={14} />
                             </div>
@@ -149,159 +150,162 @@ const TradingHeader = () => {
                 </Space>
 
                 {/* RIGHT SIDE */}
-                <Space size="middle">
-                    <div>
-                        <div style={{ textAlign: 'right' }}>
-                            <Tag color="green" style={{ fontWeight: 500, marginRight: 4 }}>Demo</Tag>
-                            <Text style={{ color: '#aaa' }}>Standard</Text>
-                        </div>
-                        <div style={{ display: 'flex', alignItems: 'center' }}>
-                            <Text strong style={{ fontSize: '16px', color: '#F1F5F9' }}>10,000.00 USD</Text>
-                            <DownOutlined style={{ fontSize: 12, marginLeft: 6, color: '#aaa' }} />
-                        </div>
+                <Space size="middle" style={{ gap: 20 }}>
+
+                <div>
+                    <div style={{ textAlign: 'right', display: "flex", justifyContent: "space-between" }}>
+                        <Tag color="green" style={{ fontWeight: 500, marginRight: 4 }}>Demo</Tag>
+                        <Text style={{ color: '#aaa' }}>Standard</Text>
                     </div>
-
-                    <Avatar style={{ backgroundColor: '#1E293B' }} icon={<BellOutlined style={{ color: '#fff' }} />} />
-                    <Avatar style={{ backgroundColor: '#1E293B' }} icon={<SettingOutlined style={{ color: '#fff' }} />} />
-
-                    {/* Appstore Icon to open deposit modal */}
-                    <Avatar
-                        onClick={() => setIsDepositModalOpen(true)}
-                        style={{ backgroundColor: '#1E293B', cursor: 'pointer' }}
-                        icon={<AppstoreOutlined style={{ color: '#fff' }} />}
-                    />
-
-                    {/* Profile menu with deposit option */}
-                    <Dropdown
-                        overlay={
-                            <Menu
-                                items={[
-                                    {
-                                        key: 'email',
-                                        icon: <MailOutlined />,
-                                        label: <Text type="secondary">t****9@gmail.com</Text>,
-                                        disabled: true,
-                                    },
-                                    {
-                                        key: 'support',
-                                        icon: <QuestionCircleOutlined />,
-                                        label: 'Support',
-                                        onClick: () => console.log('Support clicked'),
-                                    },
-                                    {
-                                        key: 'suggest',
-                                        icon: <MessageOutlined />,
-                                        label: 'Suggest a feature',
-                                        onClick: () => console.log('Suggest a feature clicked'),
-                                    },
-                                    {
-                                        key: 'deposit',
-                                        icon: <AppstoreOutlined />,
-                                        label: 'Deposit Funds',
-                                        onClick: () => setIsDepositModalOpen(true),
-                                    },
-                                    {
-                                        key: 'signout',
-                                        icon: <LogoutOutlined />,
-                                        label: 'Sign Out',
-                                        danger: true,
-                                        onClick: () => console.log('Signed out'),
-                                    },
-                                ]}
-                            />
-                        }
-                        trigger={['click']}
-                    >
-                        <Avatar
-                            style={{ backgroundColor: '#1E293B', cursor: 'pointer' }}
-                            icon={<UserOutlined style={{ color: '#fff' }} />}
-                        />
-                    </Dropdown>
-
-                    {/* Deposit Button with Dropdown Menu */}
-                    <Dropdown overlay={menu} trigger={['click']}>
-                        <Button
-                            type="primary"
-                            style={{ minWidth: 120, background: '#1D4ED8', borderColor: '#1D4ED8' }}
-                        >
-                            Deposit
-                        </Button>
-                    </Dropdown>
-                </Space>
-
-            </div>
-
-            {/* FAVORITES DROPDOWN */}
-            {visible && (
-                <div
-                    style={{
-                        position: 'absolute',
-                        top: 64,
-                        left: '20%',
-                        width: '60%',
-                        background: '#1F2A38',
-                        color: 'white',
-                        borderRadius: 8,
-                        padding: 20,
-                        zIndex: 999,
-                        boxShadow: '0 2px 10px rgba(0,0,0,0.4)',
-                    }}
-                >
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <h3 style={{ color: '#fff' }}>Add to Favorites</h3>
-                        <Button type="text" icon={<CloseOutlined style={{ color: 'white' }} />} onClick={() => setVisible(false)} />
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                        <Text strong style={{ fontSize: '16px', color: '#F1F5F9' }}>10,000.00 USD</Text>
+                        <DownOutlined style={{ fontSize: 12, marginLeft: 6, color: '#aaa' }} />
                     </div>
-
-                    <Input placeholder="Search" allowClear style={{ marginBottom: 16 }} />
-
-                    <Row gutter={[16, 12]}>
-                        {tradingPairs.map((pair) => (
-                            <Col span={24} key={pair.symbol}>
-                                <div
-                                    style={{
-                                        display: 'flex',
-                                        justifyContent: 'space-between',
-                                        alignItems: 'center',
-                                        padding: '8px 16px',
-                                        background: '#2B3B4E',
-                                        borderRadius: 4,
-                                    }}
-                                >
-                                    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                                        <img src={flagImg(pair.flag1)} alt="" width={24} />
-                                        <Text strong>{pair.symbol}</Text>
-                                        <img src={flagImg(pair.flag2)} alt="" width={24} />
-                                        <Text type="secondary" style={{ color: '#aaa' }}>{pair.desc}</Text>
-                                    </div>
-                                    <Button
-                                        type="text"
-                                        icon={
-                                            favorites.includes(pair.symbol) ? (
-                                                <StarFilled style={{ color: '#fadb14' }} />
-                                            ) : (
-                                                <StarOutlined style={{ color: 'white' }} />
-                                            )
-                                        }
-                                        onClick={() => toggleFavorite(pair.symbol)}
-                                    />
-                                </div>
-                            </Col>
-                        ))}
-                    </Row>
                 </div>
-            )}
 
-            {/* DEPOSIT MODAL */}
-            <Modal
-                open={isDepositModalOpen}
-                onCancel={() => setIsDepositModalOpen(false)}
-                title="Deposit Funds"
-                okText="Deposit"
-                onOk={() => setIsDepositModalOpen(false)}
-                centered
+                <Avatar style={{ backgroundColor: '#1E293B' }} icon={<BellOutlined style={{ color: '#fff' }} />} />
+                <Avatar style={{ backgroundColor: '#1E293B' }} icon={<SettingOutlined style={{ color: '#fff' }} />} />
+
+                {/* Appstore Icon to open deposit modal */}
+                <Avatar
+                    onClick={() => setIsDepositModalOpen(true)}
+                    style={{ backgroundColor: '#1E293B', cursor: 'pointer' }}
+                    icon={<AppstoreOutlined style={{ color: '#fff' }} />}
+                />
+
+                {/* Profile menu with deposit option */}
+                <Dropdown
+                    overlay={
+                        <Menu
+                            items={[
+                                {
+                                    key: 'email',
+                                    icon: <MailOutlined />,
+                                    label: <Text type="secondary">t****9@gmail.com</Text>,
+                                    disabled: true,
+                                },
+                                {
+                                    key: 'support',
+                                    icon: <QuestionCircleOutlined />,
+                                    label: 'Support',
+                                    onClick: () => console.log('Support clicked'),
+                                },
+                                {
+                                    key: 'suggest',
+                                    icon: <MessageOutlined />,
+                                    label: 'Suggest a feature',
+                                    onClick: () => console.log('Suggest a feature clicked'),
+                                },
+                                {
+                                    key: 'deposit',
+                                    icon: <AppstoreOutlined />,
+                                    label: 'Deposit Funds',
+                                    onClick: () => setIsDepositModalOpen(true),
+                                },
+                                {
+                                    key: 'signout',
+                                    icon: <LogoutOutlined />,
+                                    label: 'Sign Out',
+                                    danger: true,
+                                    onClick: () => console.log('Signed out'),
+                                },
+                            ]}
+                        />
+                    }
+                    trigger={['click']}
+                >
+                    <Avatar
+                        style={{ backgroundColor: '#1E293B', cursor: 'pointer' }}
+                        icon={<UserOutlined style={{ color: '#fff' }} />}
+                    />
+                </Dropdown>
+
+                {/* Deposit Button with Dropdown Menu */}
+                <Dropdown overlay={menu} trigger={['click']}>
+                    <Button
+                        // type="primary"
+                        className='DepositButton'
+                    >
+                        Deposit
+                    </Button>
+                </Dropdown>
+            </Space>
+
+        </div >
+
+            {/* FAVORITES DROPDOWN */ }
+    {
+        visible && (
+            <div
+                style={{
+                    position: 'absolute',
+                    top: 64,
+                    left: '20%',
+                    width: '60%',
+                    background: '#1F2A38',
+                    color: 'white',
+                    borderRadius: 8,
+                    padding: 20,
+                    zIndex: 999,
+                    boxShadow: '0 2px 10px rgba(0,0,0,0.4)',
+                }}
             >
-                <Input placeholder="Enter amount to deposit" addonAfter="USD" />
-            </Modal>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <h3 style={{ color: '#fff' }}>Add to Favorites</h3>
+                    <Button type="text" icon={<CloseOutlined style={{ color: 'white' }} />} onClick={() => setVisible(false)} />
+                </div>
+
+                <Input placeholder="Search" allowClear style={{ marginBottom: 16 }} />
+
+                <Row gutter={[16, 12]}>
+                    {tradingPairs.map((pair) => (
+                        <Col span={24} key={pair.symbol}>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                    padding: '8px 16px',
+                                    background: '#2B3B4E',
+                                    borderRadius: 4,
+                                }}
+                            >
+                                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                                    {/* <img src={flagImg} alt="" width={24} /> */}
+                                    <Text strong>{pair.symbol}</Text>
+                                    <img src={flagImg(pair.flag2)} alt="" width={24} />
+                                    <Text type="secondary" style={{ color: '#aaa' }}>{pair.desc}</Text>
+                                </div>
+                                <Button
+                                    type="text"
+                                    icon={
+                                        favorites.includes(pair.symbol) ? (
+                                            <StarFilled style={{ color: '#fadb14' }} />
+                                        ) : (
+                                            <StarOutlined style={{ color: 'white' }} />
+                                        )
+                                    }
+                                    onClick={() => toggleFavorite(pair.symbol)}
+                                />
+                            </div>
+                        </Col>
+                    ))}
+                </Row>
+            </div>
+        )
+    }
+
+    {/* DEPOSIT MODAL */ }
+    <Modal
+        open={isDepositModalOpen}
+        onCancel={() => setIsDepositModalOpen(false)}
+        title="Deposit Funds"
+        okText="Deposit"
+        onOk={() => setIsDepositModalOpen(false)}
+        centered
+    >
+        <Input placeholder="Enter amount to deposit" addonAfter="USD" />
+    </Modal>
         </>
     );
 };

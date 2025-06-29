@@ -1,26 +1,25 @@
 import React, { useState } from "react";
 import { Tooltip } from "antd";
 import {
-  SplitCellsOutlined,
+  PlusOutlined,
   RiseOutlined,
-  DashOutlined,
-  BranchesOutlined,
+  PicLeftOutlined,
+  BarChartOutlined,
   HighlightOutlined,
-  EditOutlined,
   FontSizeOutlined,
-  SmileOutlined,
+  SmileOutlined, DeleteOutlined
 } from "@ant-design/icons";
 
 // Beautified icons list with better semantic names
 const tools = [
-  { icon: <SplitCellsOutlined />, label: "Crosshair" },
+  { icon: <PlusOutlined />, label: "Cross" },
   { icon: <RiseOutlined />, label: "Trend Line" },
-  { icon: <DashOutlined />, label: "Horizontal Line" },
-  { icon: <BranchesOutlined />, label: "Polyline Tool" },
+  { icon: <PicLeftOutlined />, label: "Horizontal Line" },
+  { icon: <BarChartOutlined />, label: "Polyline Tool" },
   { icon: <HighlightOutlined />, label: "Curve Tool" },
-  { icon: <EditOutlined />, label: "Brush" },
   { icon: <FontSizeOutlined />, label: "Text" },
   { icon: <SmileOutlined />, label: "Emoji" },
+  { icon: <DeleteOutlined />, label: "Delete" },
 ];
 
 const TradeStatusBar = () => {
@@ -31,8 +30,8 @@ const TradeStatusBar = () => {
       style={{
         width: 56,
         height: '100%',
-        background: '#1f2a38',
-        borderRight: '1px solid #1E293B',
+        background: 'rgb(20, 29, 38)',
+        borderRight: '1px solid rgb(20, 29, 38)',
         overflowY: 'auto',
         scrollbarWidth: 'none', // for Firefox
         msOverflowStyle: 'none', // for IE/Edge
@@ -54,7 +53,7 @@ const TradeStatusBar = () => {
               onClick={() => setActiveIndex(index)}
               style={{
                 margin: "12px 0",
-                color: index === activeIndex ? "#4cf12c" : "#a3b1c2",
+                color: index === activeIndex ? "rgb(249, 206, 0)" : "#a3b1c2",
                 fontSize: 20,
                 cursor: "pointer",
                 position: "relative",
@@ -62,20 +61,6 @@ const TradeStatusBar = () => {
               }}
             >
               {tool.icon}
-              {index === activeIndex && (
-                <div
-                  style={{
-                    position: "absolute",
-                    right: -6,
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                    width: 4,
-                    height: 24,
-                    background: "#4cf12c",
-                    borderRadius: "0 2px 2px 0",
-                  }}
-                />
-              )}
             </div>
           </Tooltip>
         ))}
@@ -84,24 +69,10 @@ const TradeStatusBar = () => {
           style={{
             flexGrow: 1,
             width: "80%",
-            borderTop: "1px solid #1E293B",
+            borderTop: "1px solid rgb(20, 29, 38)",
             marginTop: 16,
           }}
         />
-
-        <Tooltip title="Measure Tool" placement="right">
-          <div
-            style={{
-              marginTop: 16,
-              color: "#a3b1c2",
-              fontSize: 20,
-              cursor: "pointer",
-              transition: "color 0.2s",
-            }}
-          >
-            <SmileOutlined />
-          </div>
-        </Tooltip>
       </div>
     </div>
   );

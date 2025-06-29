@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MenuOutlined, CalendarOutlined } from '@ant-design/icons';
+import { UnorderedListOutlined, CalendarOutlined } from '@ant-design/icons';
 import { Space } from 'antd';
 
 const iconStyle = {
@@ -11,7 +11,7 @@ const VerticalSidebar = () => {
     const [active, setActive] = useState('menu');
 
     const navItems = [
-        { key: 'menu', icon: <MenuOutlined /> },
+        { key: 'menu', icon: <UnorderedListOutlined /> },
         { key: 'calendar', icon: <CalendarOutlined /> },
     ];
 
@@ -19,7 +19,7 @@ const VerticalSidebar = () => {
         <div
             style={{
                 width: 50,
-                backgroundColor: '#1E293B',
+                backgroundColor: 'rgb(20, 29, 38)',
                 padding: '12px 0',
                 display: 'flex',
                 flexDirection: 'column',

@@ -72,3 +72,61 @@ body,
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+
+.DepositButton {
+  background: #353D41 !important;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border: transparent !important;
+  min-width: 184px;
+  min-height: 40px;
+  font-size: 16px;
+  color: #fff;
+}
+
+
+.ant-dropdown-menu,
+.ant-table-thead>tr>th {
+  background: #353D41 !important;
+}
+
+.ant-table-thead>tr>th,
+.ant-table-tbody>tr>td {
+  padding: 4px 8px !important;
+}
+
+.custom-table-row {
+  background-color: rgb(20, 29, 38) !important;
+  color: #F1F5F9 !important;
+}
+
+.ant-table {
+  background: rgb(20, 29, 38) !important;
+}
+
+.ant-table-container {
+  background: rgb(20, 29, 38) !important;
+}
+
+.ant-table-thead>tr>th {
+  background: rgb(20, 29, 38) !important;
+  color: #F1F5F9 !important;
+  border-color: #2f3e4d;
+}
+
+.ant-table-tbody>tr>td {
+  background: rgb(20, 29, 38) !important;
+  color: #F1F5F9 !important;
+  border-color: #2f3e4d;
+}
+
+/* Fix sticky column bg */
+.ant-table-cell-fix-left {
+  background: rgb(20, 29, 38) !important;
+}
+
+/* Add right border for the fixed Symbol column */
+.fixed-symbol-column {
+  border-right: 1px solid #2f3e4d !important;
+  background: rgb(20, 29, 38) !important;
+  /* optional, for sticky bg */
+}
