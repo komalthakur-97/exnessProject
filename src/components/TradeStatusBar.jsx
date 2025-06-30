@@ -10,7 +10,6 @@ import {
   SmileOutlined, DeleteOutlined
 } from "@ant-design/icons";
 
-// Beautified icons list with better semantic names
 const tools = [
   { icon: <PlusOutlined />, label: "Cross" },
   { icon: <RiseOutlined />, label: "Trend Line" },
@@ -30,11 +29,9 @@ const TradeStatusBar = () => {
       style={{
         width: 56,
         height: '100%',
-        background: 'rgb(20, 29, 38)',
-        borderRight: '1px solid rgb(20, 29, 38)',
+        background: '#1F2937',
+        borderRight: '1px solid #1F2937',
         overflowY: 'auto',
-        scrollbarWidth: 'none', // for Firefox
-        msOverflowStyle: 'none', // for IE/Edge
       }}
       className="no-scrollbar"
     >
@@ -53,7 +50,7 @@ const TradeStatusBar = () => {
               onClick={() => setActiveIndex(index)}
               style={{
                 margin: "12px 0",
-                color: index === activeIndex ? "rgb(249, 206, 0)" : "#a3b1c2",
+                color: index === activeIndex ? "#FBBF24" : "#a3b1c2",
                 fontSize: 20,
                 cursor: "pointer",
                 position: "relative",
@@ -69,7 +66,7 @@ const TradeStatusBar = () => {
           style={{
             flexGrow: 1,
             width: "80%",
-            borderTop: "1px solid rgb(20, 29, 38)",
+            borderTop: "1px solid #1F2937",
             marginTop: 16,
           }}
         />

@@ -6,7 +6,7 @@ const symbolFlags = {
     'EUR/USD': ['eu', 'us'],
     'USD/JPY': ['us', 'jp'],
     'GBP/USD': ['gb', 'us'],
-    'XAU/USD': ['us'], // Gold has no flag
+    'XAU/USD': ['us'],
 };
 
 const TradingTabs = () => {

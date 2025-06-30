@@ -19,7 +19,7 @@ const VerticalSidebar = () => {
         <div
             style={{
                 width: 50,
-                backgroundColor: 'rgb(20, 29, 38)',
+                backgroundColor: '#1F2937',
                 padding: '12px 0',
                 display: 'flex',
                 flexDirection: 'column',

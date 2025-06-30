@@ -54,7 +54,7 @@ const App = () => {
                   <div style={{ flexShrink: 0 }}>
                     <TradeStatusBar />
                   </div>
-                  <div style={{ flex: 1, overflow: 'hidden', paddingLeft: 8 }}>
+                  <div style={{ flex: 1, overflow: 'hidden' }}>
                     <TradingChart />
                   </div>
                 </div>

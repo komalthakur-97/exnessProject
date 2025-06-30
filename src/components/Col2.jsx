@@ -22,7 +22,7 @@ const ICONS = [
 const ICONSRIGHT = [
     { icon: <DownOutlined />, label: "Manage Layouts" },
     { icon: <CameraOutlined />, label: "Take a Snapshot" },
-    { icon: <Tag color="green" icon={<ArrowUpOutlined />} />, label: "IntraDay" },
+    { icon: <Tag color="#38A169" icon={<ArrowUpOutlined />} />, label: "IntraDay" },
     { icon: <ExpandOutlined />, label: "Fullscreen Mode" },
     { icon: <EyeOutlined />, label: "Show on Chart" },
 ];
@@ -31,9 +31,9 @@ const ICONSRIGHT = [
 const TradingTopBar = () => (
     <div
         style={{
-            background: "rgb(20, 29, 38)",
+            background: "#1F2937",
             padding: "4px 12px",
-            borderBottom: "1px solid #rgb(20, 29, 38)",
+            borderBottom: "1px solid ##1F2937",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
@@ -48,9 +48,10 @@ const TradingTopBar = () => (
                 defaultValue="1m"
                 size="small"
                 bordered={false}
-                style={{ color: "#fff" }}
-                dropdownStyle={{ background: "#1e1e1e", color: "#fff" }}
+                className="custom-select"
+                dropdownStyle={{ background: "#1e1e1e" }}
             >
+
                 {["1m", "5m", "15m", "1h", "1d"].map((v) => (
                     <Option key={v} value={v}>{v}</Option>
                 ))}
@@ -59,7 +60,7 @@ const TradingTopBar = () => (
             <Space size={25}>
                 {ICONS.map(({ icon, label }) => (
                     <Tooltip key={label} title={label}>
-                        <span style={{ fontSize: 20, color: '#ccc', cursor: 'pointer' }}>
+                        <span style={{ fontSize: 20, cursor: 'pointer' }} className="fontWhite">
                             {icon}
                         </span>
                     </Tooltip>
@@ -71,21 +72,20 @@ const TradingTopBar = () => (
         {/* RIGHT: Sell/Buy */}
         <Row>  <Space size={25}>
             <Button
+                className="fontWhite"
                 style={{
-                    background: 'rgb(20, 29, 38)',
-                    border: '1px solid rgb(20, 29, 38)',
-                    color: '#fff',
-                    padding: '4px 12px',
+                    background: '#1F2937',
+                    border: '1px solid #1F2937',
+                    padding: '4px',
                     textAlign: 'center',
                     height: 'auto',
-                    lineHeight: 1.2,
+                    // lineHeight: 1.2,
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
                 }}
             >
-                <span style={{ color: '#fff', fontSize: 13 }}>Save</span>
-                <span style={{ color: 'yellow', fontSize: 13 }}>Save</span>
+                <span style={{ color: "rgb(249, 206, 0)", fontWeight: 500 }} >SAVE</span>
             </Button>
             {ICONSRIGHT.map(({ icon, label }) => (
                 <Tooltip key={label} title={label}>
@@ -95,25 +95,26 @@ const TradingTopBar = () => (
                 </Tooltip>
             ))}
         </Space>
+            &nbsp; &nbsp;&nbsp; &nbsp;
             <Space>
                 <Button
                     size="small"
                     style={{
-                        background: "#CD5656",
-                        borderColor: "#CD5656",
+                        background: "#9B2C2C",
+                        borderColor: "#9B2C2C",
                         color: "#F1F5F9",
                         minWidth: 90,
                     }}
                 >
                     Sell 144.382
                 </Button>
-                <span>0.9</span>
+                <span>&nbsp;0.9&nbsp;</span>
                 <Button
                     size="small"
                     type="primary"
                     style={{
-                        background: "#295F98",
-                        borderColor: "#295F98",
+                        background: "#3182CE",
+                        borderColor: "#3182CE",
                         minWidth: 90,
                     }}
                 >

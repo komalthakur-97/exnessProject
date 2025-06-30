@@ -12,7 +12,7 @@ const dummyData = [
 
 const TradingChart = () => {
     const containerRef = useRef();
-    const chartRef = useRef(); // store chart instance
+    const chartRef = useRef();
 
     useEffect(() => {
         const container = containerRef.current;
@@ -20,7 +20,7 @@ const TradingChart = () => {
             width: container.clientWidth,
             height: 400,
             layout: {
-                background: { color: '#1e1e1e' },
+                background: { color: '#353D41' },
                 textColor: '#ccc',
             },
             grid: {
@@ -50,7 +50,6 @@ const TradingChart = () => {
             }))
         );
 
-        // 👇 ResizeObserver for dynamic resizing
         const resizeObserver = new ResizeObserver(() => {
             if (container) {
                 chart.resize(container.clientWidth, 400);
@@ -66,15 +65,18 @@ const TradingChart = () => {
 
     return (
         <Card
-            headStyle={{ background: '#1A232D', borderBottom: '1px solid #2f3e4d' }}
-            bodyStyle={{ background: '#1A232D', padding: 0 }}
+            className='tradingChart'
+            headStyle={{ background: '#353D41', borderBottom: '1px solid #2f3e4d' }}
+            bodyStyle={{ background: '#353D41', borderRadius: "0" }}
             style={{
                 background: '#1A232D',
                 border: '1px solid #2f3e4d',
                 overflow: 'hidden',
+                borderRadius: 0,
+                height: "100%"
             }}
         >
-            <div ref={containerRef} style={{ width: '100%', height: '400px' }} />
+            <div ref={containerRef} style={{ width: '100%', height: '100%', borderRadius: "0" }} />
         </Card>
     );
 };

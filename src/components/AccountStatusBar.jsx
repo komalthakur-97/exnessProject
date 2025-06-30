@@ -13,7 +13,7 @@ const AccountStatusBar = () => {
     return (
         <div
             style={{
-                background: "rgb(20, 29, 38)",
+                background: "#1F2937",
                 borderTop: "1px solid #333",
                 padding: "12px 16px",
                 display: "flex",

@@ -28,6 +28,45 @@
   color: #61dafb;
 }
 
+/* common css */
+.fontWhite {
+  color: #fff !important;
+}
+
+.custom-search-input input::placeholder {
+  color: rgb(204, 204, 204) !important;
+  opacity: 1;
+}
+
+.custom-search-input input,
+.ant-dropdown-menu-item {
+  color: rgb(204, 204, 204) !important;
+}
+
+.ant-typography.ant-typography-secondary,
+.ant-typography strong {
+  color: rgb(249, 206, 0);
+}
+
+.custom-select .ant-select-selector {
+  background: #353D41 !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 4px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.custom-select .ant-select-selection-item {
+  color: #fff !important;
+}
+
+.custom-select .ant-select-arrow {
+  color: #fff !important;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -83,6 +122,28 @@ body,
   color: #fff;
 }
 
+.DepositButton:hover {
+  color: #fff !important;
+}
+
+.custom-select .ant-select-selector {
+  color: white !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding-right: 0 !important;
+}
+
+.custom-select .ant-select-arrow {
+  display: none !important;
+  /* hide the arrow */
+}
+
+.custom-select .ant-select-selection-item {
+  color: white !important;
+  /* dropdown selected item text */
+}
+
 
 .ant-dropdown-menu,
 .ant-table-thead>tr>th {
@@ -91,42 +152,42 @@ body,
 
 .ant-table-thead>tr>th,
 .ant-table-tbody>tr>td {
-  padding: 4px 8px !important;
+  padding: 6px 8px !important;
 }
 
 .custom-table-row {
-  background-color: rgb(20, 29, 38) !important;
+  background-color: #1F2937 !important;
   color: #F1F5F9 !important;
 }
 
 .ant-table {
-  background: rgb(20, 29, 38) !important;
+  background: #1F2937 !important;
 }
 
 .ant-table-container {
-  background: rgb(20, 29, 38) !important;
+  background: #1F2937 !important;
 }
 
 .ant-table-thead>tr>th {
-  background: rgb(20, 29, 38) !important;
+  background: #1F2937 !important;
   color: #F1F5F9 !important;
   border-color: #2f3e4d;
 }
 
 .ant-table-tbody>tr>td {
-  background: rgb(20, 29, 38) !important;
+  background: #1F2937 !important;
   color: #F1F5F9 !important;
   border-color: #2f3e4d;
 }
 
 /* Fix sticky column bg */
 .ant-table-cell-fix-left {
-  background: rgb(20, 29, 38) !important;
+  background: #1F2937 !important;
 }
 
 /* Add right border for the fixed Symbol column */
 .fixed-symbol-column {
   border-right: 1px solid #2f3e4d !important;
-  background: rgb(20, 29, 38) !important;
+  background: #1F2937 !important;
   /* optional, for sticky bg */
 }

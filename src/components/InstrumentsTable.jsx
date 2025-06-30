@@ -4,12 +4,28 @@ import {
     ArrowUpOutlined,
     ArrowDownOutlined,
     MinusOutlined,
-    MoreOutlined,
+    MoreOutlined, SearchOutlined,
     CloseOutlined, HolderOutlined
 } from '@ant-design/icons';
 
 const { Option } = Select;
 
+const flagMap = {
+    'BTC': 'us',
+    'AAPL': 'us',
+    'XAU/USD': 'us',
+    'EUR/USD': 'us',
+    'GBP/USD': 'us',
+    'USD/JPY': 'jp',
+    'USTEC': 'us',
+    'USOIL': 'us',
+};
+
+const flagImg = (code) => {
+    if (code === 'xau') return 'https://upload.wikimedia.org/wikipedia/commons/6/65/Gold_Unesco.svg';
+    if (code === 'btc') return 'https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=026';
+    return `https://flagcdn.com/h24/${code}.png`;
+};
 
 const dataSource = [
     {
@@ -96,10 +112,10 @@ const dataSource = [
 
 
 const InstrumentsTable = () => {
-    const [data, setData] = useState([...dataSource]); // state to manage rows
+    const [data, setData] = useState([...dataSource]); 
 
     const [fxData, setFxData] = useState([]);
-    const dragRowIndex = useRef(); // to keep track of dragged index
+    const dragRowIndex = useRef(); 
     const dragRowKey = useRef();
 
     const components = {
@@ -145,11 +161,11 @@ const InstrumentsTable = () => {
     const getSignalTag = (signal) => {
         switch (signal) {
             case 'up':
-                return <Tag color="green" icon={<ArrowUpOutlined />} />;
+                return <Tag color="#2F855A" icon={<ArrowUpOutlined />} />;
             case 'down':
-                return <Tag color="red" icon={<ArrowDownOutlined />} />;
+                return <Tag color="#C53030" icon={<ArrowDownOutlined />} />;
             default:
-                return <Tag color="default" icon={<MinusOutlined />} />;
+                return <Tag color="rgb(249, 206, 0)" icon={<MinusOutlined />} />;
         }
     };
 
@@ -160,14 +176,23 @@ const InstrumentsTable = () => {
             key: 'symbol',
             width: 130,
             fixed: 'left',
-            className: 'fixed-symbol-column', // 👈 Add this
-            render: (_, record) => (
-                <Space>
-                    <HolderOutlined style={{ cursor: 'grab', color: '#888' }} />
-                    <span style={{ fontSize: 18 }}>{record.icon}</span>
-                    <span style={{ fontWeight: 500, color: '#F1F5F9' }}>{record.symbol}</span>
-                </Space>
-            ),
+            className: 'fixed-symbol-column',
+            render: (_, record) => {
+                const flagCode = flagMap[record.symbol] || 'us';
+                return (
+                    <Space>
+                        <HolderOutlined style={{ cursor: 'grab', color: '#888' }} />
+                        <img
+                            src={flagImg(flagCode.toLowerCase())}
+                            alt={flagCode}
+                            width={20}
+                            height={14}
+                            style={{ objectFit: 'cover', borderRadius: 2 }}
+                        />
+                        <span style={{ fontWeight: 500, color: '#F1F5F9' }}>{record.symbol}</span>
+                    </Space>
+                );
+            },
         },
         {
             title: 'Signal',
@@ -175,7 +200,6 @@ const InstrumentsTable = () => {
             key: 'signal',
             width: 60,
             render: (signal) => getSignalTag(signal),
-            // align: 'center',
         },
         {
             title: 'Bid',
@@ -185,18 +209,12 @@ const InstrumentsTable = () => {
             render: (bid) => (
                 <div
                     style={{
-                        // background: '#29b474',
                         color: '#F1F5F9',
-                        // padding: '2px 6px',
-                        // borderRadius: 4,
-                        fontWeight: 500,
-                        fontSize: 12,
                     }}
                 >
                     {bid}
                 </div>
             ),
-            // align: 'right',
         },
         {
             title: 'Ask',
@@ -206,12 +224,7 @@ const InstrumentsTable = () => {
             render: (ask) => (
                 <div
                     style={{
-                        // background: '#e84c4c',
                         color: '#F1F5F9',
-                        // padding: '2px 6px',
-                        // borderRadius: 4,
-                        fontWeight: 500,
-                        fontSize: 12,
                     }}
                 >
                     {ask}
@@ -234,7 +247,6 @@ const InstrumentsTable = () => {
                     </Space>
                 );
             },
-            // align: 'right',
         },
         {
             title: 'P/L, USD',
@@ -247,39 +259,69 @@ const InstrumentsTable = () => {
                     <span style={{ color: 'gold', fontSize: 18 }}>⭐</span>
                 </div>
             ),
-            // align: 'center',
         },
     ];
 
 
     const onDragOver = (e) => {
-        e.preventDefault(); // allow drop
+        e.preventDefault();
     };
 
-
+    const CustomHeader = (
+        <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+        }}>
+            <span style={{ color: '#aaa', fontSize: "14px", fontWeight: 500 }}>INSTRUMENTS</span>
+            <div style={{ display: 'flex', gap: 12 }}>
+                <MoreOutlined style={{ color: '#aaa', cursor: 'pointer' }} />
+                <CloseOutlined style={{ color: '#aaa', cursor: 'pointer' }} />
+            </div>
+        </div>
+    );
 
     return (
         <Card
-            title={<span style={{ color: '#aaa' }}>INSTRUMENTS</span>}
-            bodyStyle={{ background: 'rgb(20, 29, 38)', padding: '0 12px 12px' }}
+        className='instrumentsTAblepAGe'
+            title={CustomHeader}
+            bodyStyle={{ background: '#1F2937', padding: '0 12px 12px' }}
             style={{
                 width: '100%',
                 height: '100%',
-                background: 'rgb(20, 29, 38)', // ✅ set proper background
-                border: '1px solid #2f3e4d',
+                background: '#1F2937', 
+                border: '1px solid #1F2937',
                 borderRadius: 0,
                 color: '#F1F5F9',
             }}
-            headStyle={{ background: 'rgb(20, 29, 38)', borderBottom: '1px solid #2f3e4d' }}
+            headStyle={{ background: '#1F2937', borderBottom: '1px solid #1F2937' }}
         >
+
             <Input
-                placeholder="🔍 Search"
-                style={{ marginBottom: 8, background: '#0f172a', color: '#F1F5F9' }}
+                placeholder="Search"
+                prefix={<SearchOutlined style={{ color: '#fff' }} />}
+                style={{
+                    marginBottom: 8,
+                    background: '#353D41',
+                    border: 'none',
+                    color: '#fff',
+                }}
+                className="custom-search-input"
             />
-            <Select defaultValue="Favorites" style={{ width: '100%', marginBottom: 10 }}>
-                <Option value="Favorites">Favorites</Option>
-                <Option value="All">All Instruments</Option>
-            </Select>
+            <Select
+                defaultValue="Favorites"
+                style={{
+                    width: '100%',
+                    marginBottom: 10,
+                    background: '#353D41',
+                    border: 'none',
+                    color: '#fff',
+                    borderRadius: "5px"
+                }}
+                dropdownStyle={{ background: '#1F2937', color: '#fff' }}
+                className="custom-select"
+                bordered={false}
+            />
 
             <Table
                 dataSource={data}
@@ -288,9 +330,9 @@ const InstrumentsTable = () => {
                 components={components}
                 size="small"
                 pagination={false}
-                scroll={{ x: 800 }} // 👈 `x` must be >= total column width
+                scroll={{ x: 800 }} 
                 style={{
-                    background: 'rgb(20, 29, 38)',
+                    background: '#1F2937',
                     color: '#F1F5F9',
                     fontSize: 13,
                 }}

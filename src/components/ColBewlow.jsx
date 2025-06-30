@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Badge, Tooltip, Typography, Empty } from "antd";
-import { AppstoreOutlined, ExpandOutlined, MoreOutlined } from "@ant-design/icons";
+import { PicCenterOutlined, FullscreenExitOutlined, MoreOutlined } from "@ant-design/icons";
 
 const tabs = ["OPEN", "PENDING", "CLOSED"];
 
@@ -10,8 +10,8 @@ const ColBewlow = () => {
     return (
         <div
             style={{
-                background: "rgb(20, 29, 38)",
-                borderTop: "1px solid rgb(20, 29, 38)",
+                background: "#1F2937",
+                borderTop: "1px solid #1F2937",
                 padding: "0 16px",
                 display: "flex",
                 flexDirection: "column",
@@ -68,10 +68,10 @@ const ColBewlow = () => {
                 {/* Right icons */}
                 <div style={{ marginLeft: "auto", display: "flex", gap: 16 }}>
                     <Tooltip title="Grid View">
-                        <AppstoreOutlined style={{ color: "#ccc", fontSize: 16, cursor: "pointer" }} />
+                        <PicCenterOutlined style={{ color: "#ccc", fontSize: 16, cursor: "pointer" }} />
                     </Tooltip>
                     <Tooltip title="Full screen">
-                        <ExpandOutlined style={{ color: "#ccc", fontSize: 16, cursor: "pointer" }} />
+                        <FullscreenExitOutlined style={{ color: "#ccc", fontSize: 16, cursor: "pointer" }} />
                     </Tooltip>
                     <Tooltip title="More">
                         <MoreOutlined style={{ color: "#ccc", fontSize: 16, cursor: "pointer" }} />
@@ -90,7 +90,7 @@ const ColBewlow = () => {
                 }}
             > <Empty
                     image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
-                    styles={{ image: { height: 60 } }}
+                    styles={{ image: { height: 40 } }}
                     description={
                         <Typography.Text style={{ color: "#F1F5F9" }}>
                             No Positions
